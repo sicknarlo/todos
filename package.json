@@ -11,7 +11,7 @@
     "autoprefixer": "^6.3.1",
     "classnames": "https://registry.npmjs.org/classnames/-/classnames-2.2.5.tgz",
     "faker": "^3.0.1",
-    "jquery": "^2.2.4",
+    "jquery": "^3.0.0",
     "react": "https://registry.npmjs.org/react/-/react-15.1.0.tgz",
     "react-addons-css-transition-group": "https://registry.npmjs.org/react-addons-css-transition-group/-/react-addons-css-transition-group-15.1.0.tgz",
     "react-addons-pure-render-mixin": "^15.0.0",

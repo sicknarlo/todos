@@ -9,14 +9,15 @@
   },
   "dependencies": {
     "autoprefixer": "^6.3.1",
-    "classnames": "^2.2.3",
+    "classnames": "https://registry.npmjs.org/classnames/-/classnames-2.2.5.tgz",
     "faker": "^3.0.1",
-    "react": "^15.0.0",
-    "react-addons-css-transition-group": "^15.0.0",
+    "jquery": "^2.2.4",
+    "react": "https://registry.npmjs.org/react/-/react-15.1.0.tgz",
+    "react-addons-css-transition-group": "https://registry.npmjs.org/react-addons-css-transition-group/-/react-addons-css-transition-group-15.1.0.tgz",
     "react-addons-pure-render-mixin": "^15.0.0",
     "react-addons-test-utils": "^15.0.0",
-    "react-dom": "^15.0.0",
-    "react-router": "^2.0.0"
+    "react-dom": "https://registry.npmjs.org/react-dom/-/react-dom-15.1.0.tgz",
+    "react-router": "https://registry.npmjs.org/react-router/-/react-router-2.4.1.tgz"
   },
   "devDependencies": {
     "enzyme": "^2.3.0",

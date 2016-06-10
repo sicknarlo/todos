@@ -10,11 +10,12 @@ import NotFoundPage from '../../ui/pages/NotFoundPage.jsx';
 
 export const renderRoutes = () => (
   <Router history={browserHistory}>
-    <Route path="/" component={AppContainer}>
-      <Route path="lists/:id" component={ListContainer} />
-      <Route path="signin" component={AuthPageSignIn} />
-      <Route path="join" component={AuthPageJoin} />
-      <Route path="*" component={NotFoundPage} />
-    </Route>
+    <Route path="/" component={AppContainer} />
   </Router>
 );
+
+
+{/*<Route path="lists/:id" component={ListContainer} />
+<Route path="signin" component={AuthPageSignIn} />
+<Route path="join" component={AuthPageJoin} />
+<Route path="*" component={NotFoundPage} />*/}

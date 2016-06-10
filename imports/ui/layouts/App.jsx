@@ -5,6 +5,8 @@ import { Session } from 'meteor/session'; // XXX: SESSION
 import { Lists } from '../../api/lists/lists.js';
 import UserMenu from '../components/UserMenu.jsx';
 import ListList from '../components/ListList.jsx';
+import Navigation from '../components/Navigation.jsx';
+import TopNav from '../components/TopNav.jsx';
 import ConnectionNotification from '../components/ConnectionNotification.jsx';
 import Loading from '../components/Loading.jsx';
 import $ from 'jquery';
@@ -126,25 +128,10 @@ export default class App extends React.Component {
     });
 
     return (
-          <div id="container" className={menuOpen ? 'menu-open' : ''}>
-            <section id="menu">
-              <UserMenu user={user} logout={this.logout} />
-              <ListList lists={lists} />
-            </section>
-            {showConnectionIssue && !connected
-              ? <ConnectionNotification />
-              : null}
-            <div className="content-overlay" onClick={closeMenu}></div>
-            <div id="content-container">
-              <ReactCSSTransitionGroup
-                transitionName="fade"
-                transitionEnterTimeout={200}
-                transitionLeaveTimeout={200}
-              >
-                {loading
-                  ? <Loading key="loading" />
-                  : clonedChildren}
-              </ReactCSSTransitionGroup>
+          <div id="wrapper">
+            <Navigation />
+            <div id="page-wrapper" class="gray-bg">
+              <TopNav />
             </div>
           </div>
         );
@@ -165,3 +152,28 @@ App.propTypes = {
 App.contextTypes = {
   router: React.PropTypes.object,
 };
+
+//
+// return (
+//       <div id="container" className={menuOpen ? 'menu-open' : ''}>
+//         <section id="menu">
+//           <UserMenu user={user} logout={this.logout} />
+//           <ListList lists={lists} />
+//         </section>
+//         {showConnectionIssue && !connected
+//           ? <ConnectionNotification />
+//           : null}
+//         <div className="content-overlay" onClick={closeMenu}></div>
+//         <div id="content-container">
+//           <ReactCSSTransitionGroup
+//             transitionName="fade"
+//             transitionEnterTimeout={200}
+//             transitionLeaveTimeout={200}
+//           >
+//             {loading
+//               ? <Loading key="loading" />
+//               : clonedChildren}
+//           </ReactCSSTransitionGroup>
+//         </div>
+//       </div>
+//     );

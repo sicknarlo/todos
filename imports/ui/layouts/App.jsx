@@ -7,8 +7,10 @@ import UserMenu from '../components/UserMenu.jsx';
 import ListList from '../components/ListList.jsx';
 import Navigation from '../components/Navigation.jsx';
 import TopNav from '../components/TopNav.jsx';
+import Footer from '../components/Footer.jsx';
 import ConnectionNotification from '../components/ConnectionNotification.jsx';
 import Loading from '../components/Loading.jsx';
+import { Players } from '../../api/players.js';
 import $ from 'jquery';
 
 const CONNECTION_ISSUE_TIMEOUT = 5000;
@@ -71,10 +73,10 @@ export default class App extends React.Component {
 
     // FIXED-SIDEBAR
     // Uncomment this if you want to have fixed left navigation
-    // $('body').addClass('fixed-sidebar');
+    $('body').addClass('fixed-sidebar');
     // $('.sidebar-collapse').slimScroll({
-    //     height: '100%',
-    //     railOpacity: 0.9
+    //   height: '100%',
+    //   railOpacity: 0.9,
     // });
 
     // BOXED LAYOUT
@@ -82,13 +84,13 @@ export default class App extends React.Component {
     // $('body').addClass('boxed-layout');
   }
 
-  componentWillReceiveProps({ loading, children }) {
-    // redirect / to a list once lists are ready
-    if (!loading && !children) {
-      const list = Lists.findOne();
-      this.context.router.replace(`/lists/${list._id}`);
-    }
-  }
+  // componentWillReceiveProps({ loading, children }) {
+  //   // redirect / to a list once lists are ready
+  //   if (!loading && !children) {
+  //     const list = Lists.findOne();
+  //     this.context.router.replace(`/lists/${list._id}`);
+  //   }
+  // }
 
   toggleMenu(menuOpen = !Session.get('menuOpen')) {
     Session.set({menuOpen});
@@ -106,18 +108,18 @@ export default class App extends React.Component {
       }
     }
   }
-
   render() {
     const { showConnectionIssue } = this.state;
     const {
       user,
       connected,
       loading,
-      lists,
+      players,
       menuOpen,
       children,
       location,
     } = this.props;
+    console.log(this.props);
 
     const closeMenu = this.toggleMenu.bind(this, false);
 
@@ -126,12 +128,15 @@ export default class App extends React.Component {
     const clonedChildren = children && React.cloneElement(children, {
       key: location.pathname,
     });
-
     return (
           <div id="wrapper">
             <Navigation />
-            <div id="page-wrapper" class="gray-bg">
+            <div id="page-wrapper" className="gray-bg">
               <TopNav />
+              {/*{this.props.players.map(player => (
+                <div>{player.name}</div>
+              ))}*/}
+              <Footer />
             </div>
           </div>
         );
@@ -143,7 +148,7 @@ App.propTypes = {
   connected: React.PropTypes.bool,   // server connection status
   loading: React.PropTypes.bool,     // subscription status
   menuOpen: React.PropTypes.bool,    // is side menu open?
-  lists: React.PropTypes.array,      // all lists visible to the current user
+  players: React.PropTypes.array,      // all lists visible to the current user
   children: React.PropTypes.element, // matched child route component
   location: React.PropTypes.object,  // current router location
   params: React.PropTypes.object,    // parameters of the current route
